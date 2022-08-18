@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+</head>
+<style>
+    body {
+        background-color: antiquewhite;
+    }
+
+    .row {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        padding: 10px;
+    }
+
+    .icon {
+        background-color: black;
+        color: white;
+        font-size: 50px;
+        border-radius: 5px;
+    }
+
+    h1 {
+        text-align: center;
+    }
+    .dot{
+        font-size: 50px;
+    }
+</style>
+
+<body>
+    <div class="row">
+        <h1>Digital Clock</h1>
+        <span id="hours" class="icon">00 </span>
+        <span class="dot">: </span>
+        <span id="minutes" class="icon">00 </span>
+        <span class="dot">: </span>
+
+        <span id="seconds" class="icon">00</span>
+        <span id="session" class="icon">AM</span>
+    </div>
+
+
+
+    <script>
+        function clock() {
+            var now = new Date();
+            var hrs = now.getHours();
+            var min = now.getMinutes();
+            var sec = now.getSeconds();
+            var session = document.getElementById('session');
+            //12 format
+            if (hrs >= 12) {
+                session.innerHTML = 'PM';
+            } else {
+                session.innerHTML = 'AM';
+            }
+            document.getElementById('hours').innerHTML = hrs;
+            document.getElementById('minutes').innerHTML = min;
+            document.getElementById('seconds').innerHTML = sec;
+        }
+
+
+        setInterval(clock, 10);
+
+    </script>
+
+</body>
+
+</html>
